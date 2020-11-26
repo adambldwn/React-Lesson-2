@@ -5,6 +5,7 @@ import { useFormik} from 'formik';
 import firebase from '../firebase/firebase.utils'
 
 
+
 const styles = makeStyles({
   wrapper: {
     marginTop: '5rem',
@@ -20,14 +21,17 @@ function Signup() {
       password: "",
     },
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      firebase.register(values.email, values.password);
     },
   });
 
   const signupStyles = styles();
 
+  const handleGoogleButtonClick = () => {
+    firebase.useGoogleProvider();
+  }
   
-
   return (
     <Container className={signupStyles.wrapper} maxWidth="sm">
       <form onSubmit={formik.handleSubmit}>
@@ -46,11 +50,11 @@ function Signup() {
           </Grid>
 
           <Grid item xs={12}>
-            <Button type="submit" variant="contained" color="primary" fullWidth>Submit</Button>
+            <Button type="submit" variant="contained" color="primary" fullWidth>Register</Button>
           </Grid>
 
           <Grid item xs={12}>
-            <Button variant="contained" color="primary" fullWidth>SignUp with Google</Button>
+            <Button variant="contained" color="primary" fullWidth onClick={handleGoogleButtonClick} >SignUp with Google</Button>
           </Grid>
 
         </Grid>

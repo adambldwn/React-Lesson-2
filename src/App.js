@@ -3,6 +3,7 @@ import Signup from "./pages/Signup";
 
 
 function App() {
+  console.log(process.env)
   return (
     <div className="App">
       <NavBar/>
