@@ -1,14 +1,13 @@
-import NavBar from "./components/NavBar";
-import Signup from "./pages/Signup";
 
+import AppRouter from "./router/Router";
+import AuthContextProvider from './context/AuthContext'
 
 function App() {
-  console.log(process.env)
+  
   return (
-    <div className="App">
-      <NavBar/>
-      <Signup/>
-    </div>
+    <AuthContextProvider>
+      <AppRouter />
+    </AuthContextProvider>
   );
 }
 
